@@ -44,14 +44,17 @@ npm or Yarn (Yarn is preferred)
 3. Install dependencies:
    
    yarn install
+   
    yarn add axios
-   yarn add axios react-infinite-scroll-component  
+   
+   yarn add axios react-infinite-scroll-component
+   
    yarn add react-loading-skeleton
    
-4. Start the development server:
+5. Start the development server:
    
    yarn start
 
-5. Open the application in your browser:
+6. Open the application in your browser:
    
    http://localhost:3000
