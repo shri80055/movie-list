@@ -42,8 +42,16 @@ npm or Yarn (Yarn is preferred)
    cd movie-list
 
 3. Install dependencies:
-
+   
    yarn install
    yarn add axios
    yarn add axios react-infinite-scroll-component  
    yarn add react-loading-skeleton
+   
+4. Start the development server:
+   
+   yarn start
+
+5. Open the application in your browser:
+   
+   http://localhost:3000
