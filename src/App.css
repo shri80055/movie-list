@@ -1,0 +1,424 @@
+.App {
+  font-family: 'Kameron';
+  text-align: center;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+/* ::-webkit-scrollbar {
+  width: 0px;
+  background: #fff; 
+} */
+.movie-list {
+  overflow-y: auto;
+  height: 100vh;
+  
+}
+
+.genre-filter {
+  /* position: fixed;
+
+  background-color: rgba(252, 252, 252, 0.4);  */
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0 20px 0;
+}
+
+.genre-filter button {
+  margin: 5px;
+  padding: 11px;
+  border: none;
+  background-color: lightgray;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; /* To contain the background color animation within the button */
+  transition: transform 0.3s ease, border-radius 0.3s ease; /* Add transition for border-radius and scale */
+  z-index: 1;
+  color: rgb(2, 12, 43); /* Ensure text color is visible */
+  font-weight: 600;
+}
+
+.genre-filter button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #ffbebe;
+  transition: height 0.3s ease;
+  z-index: -1; /* Place the background behind the text */
+}
+
+.genre-filter button:hover::after {
+  height: 100%; /* Expand the height to fill the button from bottom to top */
+}
+
+.genre-filter button:hover {
+  color: black; /* Ensure text color is visible */
+}
+
+.genre-filter button.active {
+  background-color: red;
+  color: white;
+  transform: scale(1.1); /* Scale up when active */
+  border-top-right-radius: 13px;
+  border-bottom-left-radius: 13px; /* Apply rounded corners on active */
+  z-index: 1;
+}
+
+.genre-filter button.active::after {
+  background-color: red; /* Match the active background color */
+  height: 100%; /* Ensure the background covers the entire button when active */
+}
+
+.movies {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  justify-content: center;
+}
+
+.movie-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: white;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background: #f0f8ff;
+  border: 2px solid #e50914; /* Add border on hover */
+}
+
+/* Apply the .movie-title:hover effect when .movie-card is hovered */
+.movie-card:hover .movie-title {
+  color: #e50914;
+  transform: scale(1.05);
+}
+
+/* Apply the underline effect when .movie-card is hovered */
+.movie-card:hover .movie-title::after {
+  width: 100%;
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.movie-card h3 {
+  margin: 10px 0;
+}
+
+.movie-title {
+  position: relative;
+  color: #070b38;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.movie-title:hover {
+  color: #e50914;
+  transform: scale(1.05);
+}
+
+/* Underline effect */
+.movie-title::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #e50914;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.3s;
+}
+
+.movie-title:hover::after {
+  width: 100%;
+}
+
+.movie-dis {
+  font-size: 14px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.movie-over
+{
+  font-size: 14px;
+}
+
+
+
+.navbar {
+  position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #1c1c1c;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .navbar-logo a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #e50914;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .navbar-logo a:hover {
+    transform: scale(1.1);
+  }
+  
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .navbar-menu li {
+    position: relative;
+  }
+  
+  .navbar-menu li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s, transform 0.3s;
+    font-size: 1.1rem;
+  }
+  
+  .navbar-menu li a:hover {
+    color: #e50914;
+    transform: scale(1.05);
+  }
+  
+  /* Underline effect */
+  .navbar-menu li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #e50914;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s;
+  }
+  
+  .navbar-menu li a:hover::after {
+    width: 100%;
+  }
+  
+  
+  /* Responsive Navbar Toggle */
+  .navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  
+  .navbar-toggle span {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .navbar-toggle:hover span {
+    background-color: #e50914;
+  }
+
+
+
+/* src/components/Loader.css */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1c1c1c;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  background-color: #e50914;
+  border-radius: 50%;
+  animation: bounce 0.3s infinite alternate;
+}
+
+.dot1 {
+  animation-delay: 0s;
+}
+
+.dot2 {
+  animation-delay: 0.1s;
+}
+
+.dot3 {
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  to {
+    transform: translateY(-20px);
+    opacity: 0.7;
+  }
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .movies {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .movies {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .movie-list {
+    padding: 10px;
+  }
+
+  .genre-filter {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0 20px 0 20px;
+  }
+
+  .genre-filter button {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    background-color: lightgray;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .genre-filter button.active {
+    background-color: #e50914;
+    color: white;
+  }
+
+  .year-section {
+    margin-bottom: 30px;
+  }
+
+  .year-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #f0f8ff;
+    background-color: #333;
+    padding: 10px;
+  }
+
+  .movies {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+.movie-title {
+  position: relative;
+  color: #f0f8ff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+  .movie-card {
+    padding: 10px;
+    background-color: #444;
+    color: #f0f8ff;
+    border-radius: 10px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .movie-card img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .movie-card h3 {
+    margin: 10px 0;
+  }
+}
+
+
+
+
+
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    background-color: #1c1c1c;
+    padding: 20px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+
+  .navbar-menu li {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #333;
+  }
+
+  .navbar-menu li:first-child {
+    border-top: none;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .navbar-logo a {
+    font-size: 1.6rem;
+  }
+
+  .navbar-search input {
+    width: 150px;
+  }
+}
